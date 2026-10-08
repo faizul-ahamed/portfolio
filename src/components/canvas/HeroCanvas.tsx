@@ -37,7 +37,8 @@ function HolographicCore() {
       positions[i * 3 + 1] = r * Math.sin(theta) * Math.sin(phi);
       positions[i * 3 + 2] = r * Math.cos(phi);
       
-      const c = colorTheme[Math.floor(Math.random() * colorTheme.length)];
+      // Deterministic color assignment based on index
+      const c = colorTheme[i % colorTheme.length];
       colors[i * 3] = c.r;
       colors[i * 3 + 1] = c.g;
       colors[i * 3 + 2] = c.b;

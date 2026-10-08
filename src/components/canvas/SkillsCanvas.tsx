@@ -2,7 +2,7 @@
 
 import { useRef, useState, useMemo, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, Float, Sphere, Environment, Points, PointMaterial, Stars, Text } from '@react-three/drei';
+import { OrbitControls, Float, Environment, Points, PointMaterial, Stars, Text } from '@react-three/drei';
 import * as THREE from 'three';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { skillsData, SkillData } from '../sections/SkillsSection';
@@ -17,8 +17,8 @@ function CameraController({ selectedNode }: { selectedNode: string | null }) {
   useEffect(() => {
     if (!controls) return;
     
-    // @ts-ignore - controls target exists on OrbitControls
-    const targetObj = controls.target as THREE.Vector3;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const targetObj = (controls as any).target as THREE.Vector3;
 
     if (selectedNode === 'core') {
       // Zoom into core
@@ -73,15 +73,23 @@ function AICore({ onSelect }: { onSelect: () => void }) {
     const colorTheme = [new THREE.Color('#00f2fe'), new THREE.Color('#a18cd1')];
     
     for (let i = 0; i < count; i++) {
-      const r = 1.2 * Math.cbrt(Math.random());
-      const theta = Math.random() * 2 * Math.PI;
-      const phi = Math.acos(2 * Math.random() - 1);
+      // Deterministic pseudo-random generation based on index
+      const seed1 = Math.sin(i * 12.9898) * 43758.5453;
+      const rand1 = seed1 - Math.floor(seed1);
+      const seed2 = Math.cos(i * 78.233) * 43758.5453;
+      const rand2 = seed2 - Math.floor(seed2);
+      const seed3 = Math.sin(i * 93.382) * 43758.5453;
+      const rand3 = seed3 - Math.floor(seed3);
+
+      const r = 1.2 * Math.cbrt(rand1);
+      const theta = rand2 * 2 * Math.PI;
+      const phi = Math.acos(2 * rand3 - 1);
       
       pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
       pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
       pos[i * 3 + 2] = r * Math.cos(phi);
       
-      const c = colorTheme[Math.floor(Math.random() * colorTheme.length)];
+      const c = colorTheme[i % colorTheme.length];
       col[i * 3] = c.r;
       col[i * 3 + 1] = c.g;
       col[i * 3 + 2] = c.b;

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Award, Briefcase, BookOpen, Terminal, Code2 } from 'lucide-react';
+import { X, Terminal, Code2 } from 'lucide-react';
 import SkillsCanvas from '@/components/canvas/SkillsCanvas';
 
 export type SkillData = {

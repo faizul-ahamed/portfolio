@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import Navbar from '@/components/ui/Navbar';
 import HeroSection from '@/components/sections/HeroSection';

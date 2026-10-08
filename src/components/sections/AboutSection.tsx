@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Award, BookOpen, MapPin, Terminal } from 'lucide-react';
+import { MapPin, Terminal } from 'lucide-react';
 
 export default function AboutSection() {
   return (
@@ -53,7 +53,7 @@ export default function AboutSection() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <p className="text-white/80 font-sans leading-relaxed text-lg mb-8 relative z-10">
-                I am a final-year IT undergraduate with hands-on experience in full-stack development, cloud platforms (OCI, Firebase), and Python/Java-based backend systems. I am passionate about building scalable, real-world applications and constantly pushing the boundaries of what's possible with code. My core interests lie in mobile app development, cloud technologies, and building robust full-stack software architectures.
+                I am a final-year IT undergraduate with hands-on experience in full-stack development, cloud platforms (OCI, Firebase), and Python/Java-based backend systems. I am passionate about building scalable, real-world applications and constantly pushing the boundaries of what&apos;s possible with code. My core interests lie in mobile app development, cloud technologies, and building robust full-stack software architectures.
               </p>
               
               <div className="flex flex-wrap gap-4 mb-8 relative z-10">

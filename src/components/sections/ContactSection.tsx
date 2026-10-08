@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Mail, Phone, Rocket } from 'lucide-react';
+import { Mail, Phone, Rocket } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function ContactSection() {
